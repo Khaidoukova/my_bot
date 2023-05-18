@@ -1,24 +1,11 @@
-from aiogram import Bot, Dispatcher, executor
-import handlers
+import telebot
+from telebot import types
 
+bot = telebot.TeleBot('5940664174:AAEX6wiHCnS1qjZZCmbThtg_PEazi4lntjk')
 
+@bot.message_handler(content_types=["text"])
+def repeat_all_messages(message): # Название функции не играет никакой роли
+    bot.send_message(message.chat.id, message.text)
 
-API_TOKEN = '5940664174:AAEX6wiHCnS1qjZZCmbThtg_PEazi4lntjk'
-
-# создаем экземпляры бота и диспетчера
-bot = Bot(token=API_TOKEN)
-dp = Dispatcher(bot)
-
-# регистрируем функции
-dp.register_message_handler(handlers.start, commands=["start"])
-dp.register_message_handler(handlers.echo)
-
-# запускаем программу
 if __name__ == '__main__':
-    executor.start_polling(dp, skip_updates=True)
-
-
-# указание skip_updates=True
-# пропустит команды,
-# которые отправили
-# до старта бота
+     bot.infinity_polling()
