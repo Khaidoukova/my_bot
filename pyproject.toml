@@ -9,6 +9,7 @@ packages = [{include = "my_bot"}]
 [tool.poetry.dependencies]
 python = "^3.11"
 aiogram = "^2.25.1"
+pytelegrambotapi = "^4.11.0"
 
 
 [build-system]
